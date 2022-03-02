@@ -12,7 +12,7 @@ ENV PATH="/opt/docspell-joex/bin:${PATH}"
 RUN JDKPKG="openjdk11"; \
     TESSERACTPKGS="tesseract-ocr tesseract-ocr-data-deu tesseract-ocr-data-fra tesseract-ocr-data-ita tesseract-ocr-data-spa tesseract-ocr-data-por tesseract-ocr-data-ces \
     tesseract-ocr-data-nld tesseract-ocr-data-dan tesseract-ocr-data-fin tesseract-ocr-data-nor tesseract-ocr-data-swe tesseract-ocr-data-rus tesseract-ocr-data-ron \
-    tesseract-ocr-data-lav tesseract-ocr-data-jpn tesseract-ocr-data-heb" \
+    tesseract-ocr-data-lav tesseract-ocr-data-jpn tesseract-ocr-data-heb"; \
     if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
     if [ "$FLAVOR" = "slim" ]; then TESSERACTPKGS="tesseract-ocr"; fi; \ 
     apk add --no-cache $JDKPKG \

@@ -1,4 +1,4 @@
-FROM alpine:3.15
+FROM alpine:3.14
 
 ARG version=
 ARG joex_url=
@@ -9,6 +9,7 @@ ENV JAVA_OPTS="-Xmx1536M"
 
 RUN JDKPKG="openjdk17"; \
     if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
+   Nif [ "$TARGETPLATFORM" = "linux/arm64" ]; then JDKPKG="openjdk8"; fi; \
     apk add --no-cache $JDKPKG \
     tzdata \
     bash \

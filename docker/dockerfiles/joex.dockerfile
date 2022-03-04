@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM openjdk:11-jdk-slim-bullseye
 
 ARG version=
 ARG joex_url=
@@ -7,9 +7,7 @@ ARG TARGETPLATFORM
 
 ENV JAVA_OPTS="-Xmx1536M"
 
-RUN JDKPKG="openjdk11"; \
-    if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
-    apk add --no-cache $JDKPKG \
+RUN apt update && apt install -y --no-recommends \
     tzdata \
     bash \
     curl \
@@ -55,7 +53,8 @@ RUN JDKPKG="openjdk11"; \
   && pip3 install ocrmypdf \
   && curl -Ls $UNO_URL -o /usr/local/bin/unoconv \
   && chmod +x /usr/local/bin/unoconv \
-  && apk del curl libxml2-dev libxslt-dev zlib-dev g++ python3-dev py3-pip libffi-dev qpdf-dev openssl-dev \
+  && apt remove curl libxml2-dev libxslt-dev zlib-dev g++ python3-dev py3-pip libffi-dev qpdf-dev openssl-dev \
+  && rm -rf /var/lib/{apt,dpkg,cache,log}/ \
   && ln -s /usr/bin/python3 /usr/bin/python
 
 WORKDIR /opt

@@ -53,8 +53,8 @@ RUN pip3 install --upgrade pip \
   && pip3 install ocrmypdf \
   && curl -Ls $UNO_URL -o /usr/local/bin/unoconv \
   && chmod +x /usr/local/bin/unoconv 
-RUN apt purge curl libxml2-dev libxslt-dev zlib1g-dev g++ python3-dev python3-pip libffi-dev libqpdf-dev libssl-dev
-RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
+#RUN apt purge curl libxml2-dev libxslt-dev zlib1g-dev g++ python3-dev python3-pip libffi-dev libqpdf-dev libssl-dev
+#RUN rm -rf /var/lib/{apt,dpkg,cache,log}/
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
 WORKDIR /opt

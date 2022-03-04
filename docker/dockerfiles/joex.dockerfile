@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 ARG version=
 ARG joex_url=
@@ -9,7 +9,6 @@ ENV JAVA_OPTS="-Xmx1536M"
 
 RUN JDKPKG="openjdk17"; \
     if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
-    if [ "$TARGETPLATFORM" = "linux/arm64" ]; then JDKPKG="openjdk8"; fi; \
     apk add --no-cache $JDKPKG \
     tzdata \
     bash \
@@ -33,7 +32,7 @@ RUN JDKPKG="openjdk17"; \
     tesseract-ocr-data-jpn \
     tesseract-ocr-data-heb \
     unpaper \
-    wkhtmltopdf \
+    weasyprint \
     libreoffice \
     ttf-droid-nonlatin \
     ttf-droid \

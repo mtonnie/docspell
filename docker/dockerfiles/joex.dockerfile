@@ -7,7 +7,7 @@ ARG TARGETPLATFORM
 
 ENV JAVA_OPTS="-Xmx1536M"
 
-RUN apt update && apt install -y --no-recommends \
+RUN apt update && apt install -y --no-install-recommends \
     tzdata \
     bash \
     curl \

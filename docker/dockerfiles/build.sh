@@ -44,14 +44,14 @@ case $version in
         docker buildx build \
                --platform="$platforms" $push \
                --build-arg restserver_url="$url_base/docspell-restserver-$version.zip" \
-               --tag docspell/restserver:nightly \
+               --tag mtonnie/docspell-restserver:nightly \
                -f restserver.dockerfile .
 
         echo "============ Building Joex ============"
         docker buildx build \
                --platform="$platforms" $push \
                --build-arg joex_url="$url_base/docspell-joex-$version.zip" \
-               --tag docspell/joex:nightly \
+               --tag mtonnie/docspell-joex:nightly \
                -f joex.dockerfile .
         ;;
     *)
@@ -60,15 +60,15 @@ case $version in
         docker buildx build \
                --platform="$platforms" $push \
                --build-arg version=$version \
-               --tag docspell/restserver:v$version \
-               --tag docspell/restserver:latest \
+               --tag mtonnie/docspell-restserver:v$version \
+               --tag mtonnie/docspell-restserver:latest \
                -f restserver.dockerfile .
 
         echo "============ Building Joex ============"
         docker buildx build \
                --platform="$platforms" $push \
                --build-arg version=$version \
-               --tag docspell/joex:v$version \
-               --tag docspell/joex:latest \
+               --tag mtonnie/docspell-joex:v$version \
+               --tag mtonnie/docspell-joex:latest \
                -f joex.dockerfile .
 esac

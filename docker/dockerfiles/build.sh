@@ -44,14 +44,14 @@ case $version in
         docker buildx build \
                --platform="$platforms" $push \
                --build-arg restserver_url="$url_base/docspell-restserver-$version.zip" \
-               --tag mtonnie/docspell-restserver:openjdk8 \
+               --tag mtonnie/docspell-restserver:openjdk17 \
                -f restserver.dockerfile .
 
         echo "============ Building Joex ============"
         docker buildx build \
                --platform="$platforms" $push \
                --build-arg joex_url="$url_base/docspell-joex-$version.zip" \
-               --tag mtonnie/docspell-joex:openjdk8 \
+               --tag mtonnie/docspell-joex:openjdk17 \
                -f joex.dockerfile .
         ;;
     *)

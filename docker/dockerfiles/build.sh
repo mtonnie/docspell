@@ -38,7 +38,7 @@ docker buildx create --name docspell-builder --use
 case $version in
     *SNAPSHOT)
         echo ">>>> Building nightly images for $version <<<<<"
-        url_base="https://github.com/eikek/docspell/releases/download/nightly"
+        url_base="https://github.com/mtonnie/docspell/releases/download/nightly"
 
         echo "============ Building Restserver ============"
         docker buildx build \

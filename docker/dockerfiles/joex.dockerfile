@@ -49,7 +49,7 @@ RUN apt update && apt install -y --no-install-recommends \
     libqpdf-dev \
     libssl-dev \
     ocrmypdf \
-    wget
+    wget unzip
 RUN pip3 install --upgrade pip \
   && pip3 install ocrmypdf \
   && curl -Ls $UNO_URL -o /usr/local/bin/unoconv \

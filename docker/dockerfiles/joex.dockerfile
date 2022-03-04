@@ -7,7 +7,7 @@ ARG TARGETPLATFORM
 
 ENV JAVA_OPTS="-Xmx1536M"
 
-RUN JDKPKG="openjdk17"; \
+RUN JDKPKG="openjdk8"; \
     if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
     apk add --no-cache $JDKPKG \
     tzdata \

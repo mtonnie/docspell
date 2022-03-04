@@ -57,7 +57,7 @@ RUN apk add --no-cache \
   && ln -s /usr/bin/python3 /usr/bin/python
 
 WORKDIR /opt
-RUN wget ${joex_url:-https://github.com/mtonnie/docspell/releases/download/v$version/docspell-joex-$version.zip} && \
+RUN wget ${joex_url:-https://github.com/eikek/docspell/releases/download/v$version/docspell-joex-$version.zip} && \
   unzip docspell-joex-*.zip && \
   rm docspell-joex-*.zip && \
   ln -snf docspell-joex-* docspell-joex && \

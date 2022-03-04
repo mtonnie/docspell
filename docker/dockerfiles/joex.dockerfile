@@ -1,4 +1,4 @@
-FROM amazoncorretto:11-alpine3.14-jdk
+FROM alpine:3.14
 
 ARG version=
 ARG joex_url=
@@ -7,7 +7,9 @@ ARG TARGETPLATFORM
 
 ENV JAVA_OPTS="-Xmx1536M"
 
-RUN apk add --no-cache \
+RUN JDKPKG="openjdk17"; \
+    if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
+    apk add --no-cache $JDKPKG \
     tzdata \
     bash \
     curl \

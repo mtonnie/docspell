@@ -48,14 +48,14 @@ RUN apt update && apt install -y --no-recommends \
     libffi-dev\
     qpdf-dev \
     openssl-dev \
-    ocrmypdf \
-  && pip3 install --upgrade pip \
+    ocrmypdf
+RUN pip3 install --upgrade pip \
   && pip3 install ocrmypdf \
   && curl -Ls $UNO_URL -o /usr/local/bin/unoconv \
-  && chmod +x /usr/local/bin/unoconv \
-  && apt remove curl libxml2-dev libxslt-dev zlib-dev g++ python3-dev py3-pip libffi-dev qpdf-dev openssl-dev \
-  && rm -rf /var/lib/{apt,dpkg,cache,log}/ \
-  && ln -s /usr/bin/python3 /usr/bin/python
+  && chmod +x /usr/local/bin/unoconv 
+RUN apt remove curl libxml2-dev libxslt-dev zlib-dev g++ python3-dev py3-pip libffi-dev qpdf-dev openssl-dev \
+  && rm -rf /var/lib/{apt,dpkg,cache,log}/
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 WORKDIR /opt
 RUN wget ${joex_url:-https://github.com/eikek/docspell/releases/download/v$version/docspell-joex-$version.zip} && \

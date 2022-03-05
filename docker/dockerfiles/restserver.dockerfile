@@ -1,10 +1,10 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 ARG version=
 ARG restserver_url=
 ARG TARGETPLATFORM
 
-RUN JDKPKG="openjdk11"; \
+RUN JDKPKG="openjdk17"; \
     if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then JDKPKG="openjdk8"; fi; \
     apk add --no-cache $JDKPKG bash tzdata
 
